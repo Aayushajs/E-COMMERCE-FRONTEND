@@ -1,0 +1,80 @@
+/* Modal Overlay - This covers the entire screen when the modal is active */
+.modal-overlay {
+  position: fixed; /* Fixed position to ensure it stays on the screen even when scrolling */
+  top: 0; /* Aligns the top edge of the overlay to the top of the screen */
+  left: 0; /* Aligns the left edge of the overlay to the left side of the screen */
+  width: 100%; /* Takes up the full width of the screen */
+  height: 100%; /* Takes up the full height of the screen */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex; /* Uses flexbox to center the modal content */
+  justify-content: center; /* Horizontally centers the modal content */
+  align-items: center; /* Vertically centers the modal content */
+  z-index: 1000; /* Ensures the modal overlay is above other content */
+}
+
+/* Modal Content - The actual modal box where the content (form) is placed */
+.modal-content {
+  background: #fff; /* White background for the modal */
+  padding: 2rem; /* Padding around the content for spacing */
+  border-radius: 15px; /* Rounded corners for the modal */
+  width: 90%; /* Modal width is 90% of the screen's width */
+  max-width: 400px; /* Max width of the modal is 400px */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds a shadow around the modal to make it pop */
+  position: relative; /* Positioning for the close button */
+}
+
+/* Modal Title - The title of the modal */
+.modal-title {
+  font-size: 1.5rem; /* Sets the font size for the title */
+  color: #333; /* Dark grey color for the text */
+  text-align: center; /* Centers the title text */
+  margin-bottom: 1.5rem; /* Space below the title */
+}
+
+/* Close Button - The button to close the modal */
+.close-btn {
+  position: absolute; /* Positioned absolutely inside the modal content */
+  top: 10px; /* 10px from the top edge of the modal */
+  right: 10px; /* 10px from the right edge of the modal */
+  font-size: 1.5rem; /* Larger font size for the close icon */
+  color: #555; /* Medium grey color for the close icon */
+  border: none; /* No border for the button */
+  background: none; /* No background for the button */
+  cursor: pointer; /* Changes the cursor to pointer on hover */
+}
+
+/* Form Labels - Styling for the labels of the input fields */
+.login-form label {
+  display: block; /* Makes each label block-level, so it takes up full width */
+  font-size: 0.9rem; /* Slightly smaller font size for labels */
+  color: #555; /* Medium grey color for the label text */
+  margin-bottom: 0.5rem; /* Small margin below the label */
+}
+
+/* Input Fields - Styling for the input fields (email & password) */
+.login-form input {
+  width: 100%; /* Full width input fields */
+  padding: 0.7rem; /* Padding inside the input field */
+  margin-bottom: 1rem; /* Space between input fields */
+  border: 1px solid #ddd; /* Light grey border for the input fields */
+  border-radius: 5px; /* Slightly rounded corners for the input fields */
+  font-size: 0.9rem; /* Slightly smaller font size for input text */
+}
+
+/* Submit Button - Styling for the login submit button */
+.submit-btn {
+  width: 100%; /* Full width button */
+  padding: 0.7rem; /* Padding inside the button */
+  background: var(--button-color); /* Uses a CSS variable for the button's background color */
+  color: #fff; /* White text color for the button */
+  border: none; /* No border for the button */
+  border-radius: 5px; /* Slightly rounded corners for the button */
+  font-size: 1rem; /* Standard font size for the button text */
+  cursor: pointer; /* Changes the cursor to pointer on hover */
+  transition: background 0.3s ease; /* Smooth transition for the background color */
+}
+
+/* Submit Button Hover - Changes the button's background color on hover */
+.submit-btn:hover {
+  background: #5753c9; /* Darker shade of the button color on hover */
+}
