@@ -1,5 +1,5 @@
 
-# E-Commerce Website Backend
+# E-Commerce Website Frontend
 
 ## Project Overview
 
