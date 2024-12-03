@@ -105,7 +105,7 @@ function Signup() {
                 Have an account? 
                 <button
                   style={{ background: "none", border: "none", textDecoration: "underline", color: "#3B82F6", cursor: "pointer" }}
-                  onClick={() => document.getElementById("my_modal_3").showModal()}
+                  onClick={() => document.getElementById("login-container").showModal()}
                 >
                   Login
                 </button>
