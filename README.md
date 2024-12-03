@@ -124,3 +124,4 @@ Defines different page layouts and their respective functionality.
 
 The main component that integrates all routes and pages.
 Would you like boilerplate code for any specific file?
+ 
