@@ -10,7 +10,7 @@ const Home = () => {
       <Navbar />
       
       {/* Responsive Image Section: This section displays a banner image */}
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
+      <div style={{ textAlign: 'center', margin: '20px 0', marginTop:'60px' }}>
         <img 
           src="https://chargebacks911.com/wp-content/uploads/2023/08/Online-vs-In-Store-Shopping-blog.jpg" // The image URL
           alt="Shopping Banner" // Descriptive text for the image for accessibility
