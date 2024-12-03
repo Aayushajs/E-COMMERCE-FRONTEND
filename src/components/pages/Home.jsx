@@ -18,7 +18,7 @@ const Home = () => {
             width: '100%', // Makes the image take up the full width of its container
             maxWidth: '12100px', // Prevents the image from growing too large (correct typo here as '12100px' seems too large)
             height: 'auto', // Ensures the image keeps its aspect ratio when resized
-            borderRadius: '8px' // Rounds the corners of the image
+            borderRadius: '8px', // Rounds the corners of the image
             marginTop:'10px'
           }} 
         />
