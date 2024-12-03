@@ -1,169 +1,130 @@
-/* Root Variables for Colors */
-:root {
-  --primary-color: #6c63ff;  /* Primary color for buttons and highlights */
-  --secondary-color: #f4f4f9; /* Secondary background color */
-  --text-color: #ffffff;  /* Text color */
-  --button-color: #ce179a; /* Button color */
-  --background-gradient: linear-gradient(135deg, #807aef, #ef69c7);  /* Gradient background for navbar */
-}
-
-/* General Styles */
-body {
-  margin: 0;  /* Remove default margin */
-  font-family: "Poppins", sans-serif;  /* Use Poppins font */
-  background-color: #f9f9f9;  /* Set light background color for the body */
-}
-
-/* Navbar Styles */
+/* General styles */
 .navbar {
-  position: sticky;  /* Make navbar stick to the top when scrolling */
-  top: 0;  /* Stick to the top */
-  z-index: 1000;  /* Ensure it stays on top of other content */
-  width: 100%;  /* Full width */
-  background: var(--background-gradient);  /* Gradient background */
-  color: var(--text-color);  /* White text color */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Shadow for a floating effect */
-  border-radius: 50px;  /* Round corners for the navbar */
-  margin: 1rem auto;  /* Center navbar with margin */
-  max-width: 95%;  /* Make navbar more compact */
-}
-
-/* Container to hold navbar items */
-.container {
-  display: flex;  /* Flexbox layout */
-  align-items: center;  /* Vertically center items */
-  justify-content: space-between;  /* Space out items */
-  padding: 0.8rem 1.5rem;  /* Add padding */
-}
-
-/* Logo Styles */
-.logo {
-  font-size: 1.8rem;  /* Font size for logo */
-  font-weight: bold;  /* Make logo text bold */
-  color: var(--text-color);  /* Set logo text color to white */
-  text-decoration: none;  /* Remove underline */
-}
-
-/* Highlight text effect for logo */
-.logo .highlight {
-  background: linear-gradient(to right, #7f3838be, #0c0c0c);  /* Gradient background */
-  -webkit-background-clip: text;  /* Clip the gradient to the text */
-  -webkit-text-fill-color: transparent;  /* Make the text fill transparent so the gradient shows */
-}
-
-/* Navbar Menu */
-.nav-menu {
-  display: flex;  /* Flexbox layout for nav items */
-  gap: 1rem;  /* Space between menu items */
-  align-items: center;  /* Vertically center items */
-  transition: all 0.3s ease-in-out;  /* Smooth transition for opening/closing menu */
-}
-
-/* Individual menu links */
-.nav-link {
-  font-size: 1rem;  /* Font size for menu items */
-  font-weight: 500;  /* Medium weight */
-  text-decoration: none;  /* Remove underline */
-  color: var(--text-color);  /* Set text color to white */
-  padding: 0.5rem 1rem;  /* Add padding to each menu item */
-  border-radius: 20px;  /* Round corners of menu items */
-  transition: all 0.3s ease-in-out;  /* Smooth transition on hover */
-}
-
-/* Hover effect for menu links */
-.nav-link:hover {
-  background: #ffffff;  /* White background on hover */
-  color: var(--primary-color);  /* Change text color to primary color */
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);  /* Light shadow on hover */
-  transform: translateY(-2px);  /* Slightly lift the item */
-}
-
-/* Button style for login/logout button */
-.nav-link.button {
-  background: var(--button-color);  /* Button color */
-  color: #fff;  /* White text on button */
-  padding: 0.5rem 1.2rem;  /* Add padding */
-  border-radius: 20px;  /* Round corners of button */
-  cursor: pointer;  /* Pointer cursor on hover */
-  transition: all 0.3s ease;  /* Smooth transition on hover */
-}
-
-/* Hover effect for button */
-.nav-link.button:hover {
-  background: #fff;  /* White background on hover */
-  color: var(--button-color);  /* Change text color to button color */
-}
-
-/* General button styles */
-.button {
-  background: var(--button-color);  /* Button color */
-  color: #ffffff;  /* White text */
-  padding: 0.5rem 1.2rem;  /* Padding */
-  border-radius: 20px;  /* Round corners */
-  font-weight: bold;  /* Bold text */
-  text-transform: uppercase;
-  border-color: #ef14ad;  /* Uppercase text */
-  transition: all 0.3s ease-in-out;  /* Smooth transition on hover */
-}
-
-/* Hover effect for general button */
-.button:hover {
-  background: #ffffff;  /* White background on hover */
-  color: var(--button-color);  /* Change text color to button color */
-}
-
-/* Hamburger Menu (for mobile view) */
-.hamburger {
-  display: none;  /* Initially hidden */
-  flex-direction: column;  /* Stack the hamburger lines vertically */
-  gap: 5px;  /* Space between lines */
-  cursor: pointer;  /* Pointer cursor */
-}
-
-/* Hamburger lines */
-.hamburger .line {
-  width: 25px;  /* Set line width */
-  height: 3px;  /* Set line height */
-  background: var(--text-color);  /* Set line color */
-  border-radius: 2px;  /* Round corners of the lines */
-  transition: all 0.3s ease;  /* Smooth transition */
-}
-
-/* Transformations for when menu is open */
-.hamburger .rotate {
-  transform: rotate(45deg) translate(5px, 5px);  /* Rotate lines when menu opens */
-}
-
-.hamburger .fade-out {
-  opacity: 0;  /* Fade out the second line */
-}
-
-.hamburger .rotate-back {
-  transform: rotate(-45deg) translate(5px, -5px);  /* Rotate the lines back when menu closes */
-}
-
-/* Responsive Styles for screens smaller than 768px */
-@media (max-width: 768px) {
-  .nav-menu {
-      position: absolute;  /* Position menu absolutely */
-      top: 100%;  /* Place below the navbar */
-      right: 1rem;  /* Align to the right */
-      background: var(--background-gradient);  /* Use gradient background */
-      flex-direction: column;  /* Stack menu items vertically */
-      gap: 1rem;  /* Space between items */
-      padding: 1rem;  /* Add padding */
-      border-radius: 20px;  /* Round corners */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* Add shadow */
-      display: none;  /* Initially hide the menu */
+    position: fixed;
+    top: 0.2rem;
+    width: 100%;
+    z-index: 50;
+    background-color: #e8dfdf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.336);
+    border-radius: 50px;
+    padding: 16px 0;
+    transition: all 0.3s;
   }
-
-  /* Show the menu when it's open */
-  .nav-menu.open {
-      display: flex;  /* Display the menu */
+  
+  .navbar-sticky {
+    background-color: #f3f4f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
+  
+  .container {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .left, .right {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .logo {
+    font-size: 26px;
+    font-weight:900;
+    color: #c2208c;
+    text-decoration: none;
 
-  /* Show the hamburger menu when screen width is smaller */
+  }
+  
   .hamburger {
-      display: flex;  /* Display hamburger */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
   }
-}
+  
+  .hamburger-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 1px;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-item:hover {
+    color: #e54683;
+  }
+ 
+  
+  .login-btn {
+    background-color: #1cc35f;
+    color: white;
+    padding: 9px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: 15px;
+    border: none;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: #e847cd;
+  }
+  
+  .mobile-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mobile-nav-list .nav-item {
+    padding: 10px 0;
+    display: block;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media screen and (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .center {
+      
+      display: none;
+    }
+  
+    .mobile-menu {
+      margin-top: 90px;
+      border-radius: 10px;
+      padding: 10px 1px;
+      display: block;
+    }
+  }
+  

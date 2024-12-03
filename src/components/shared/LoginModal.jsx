@@ -1,82 +1,86 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./LoginModal.css";
+import React, { useState } from "react"; // Importing React and useState hook
+import { Link } from "react-router-dom"; // Importing Link for routing to the signup page
+import { useForm } from "react-hook-form"; // Importing useForm hook for form validation
+import axios from "axios"; // Importing axios for making HTTP requests
+import toast from "react-hot-toast"; // Importing toast for showing notifications
+import "./Login.css"; // Importing external CSS file for styling
 
-// LoginModal component to handle user login
-const LoginModal = ({ onClose, onLoginSuccess }) => {
-  // State to store the email, password, and any error messages
-  const [email, setEmail] = useState(""); // Store email input value
-  const [password, setPassword] = useState(""); // Store password input value
-  const [error, setError] = useState(""); // Store error message if login fails
+function Login() {
+  const [isModalOpen, setIsModalOpen] = useState(true); // State to control modal visibility
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm(); // Using react-hook-form for form handling and validation
 
-  // Function to handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the page from reloading on form submission
-
+  const onSubmit = async (data) => {
+    const userInfo = {
+      email: data.email, // Collecting email from form data
+      password: data.password, // Collecting password from form data
+    };
     try {
-      // Sending login request to backend with email and password
-      const response = await axios.post("https://e-comerce-backend-mf8i.onrender.com/api/v1/user/login", {
-        email,
-        password,
-      });
-
-      // Log the response data from backend
-      console.log("Login response:", response.data);
-
-      // If login is successful (success is true from backend)
-      if (response.data.success) {
-        onLoginSuccess(); // Call the parent component's success handler
-      } else {
-        // If login failed, show the error message from backend
-        setError(response.data.message);
+      const res = await axios.post("https://e-comerce-backend-mf8i.onrender.com/api/v1/user/login", userInfo); // Sending login request to backend
+      if (res.data) { // Checking if response data is available
+        toast.success("Logged in Successfully"); // Showing success toast message
+        document.getElementById("login-container").close(); // Closing the modal on successful login
+        setIsModalOpen(false); // Updating modal state to false (closed)
+        localStorage.setItem("Users", JSON.stringify(res.data.user)); // Storing user data in localStorage
+        setTimeout(() => window.location.reload(), 1000); // Reloading the page after 1 second
       }
-    } catch (error) {
-      // If there is any error while making the request
-      console.error("Login error:", error);
-      // Display a generic error message
-      setError("An error occurred. Please try again later.");
+    } catch (err) { // Handling any error during the login process
+      toast.error(`Error: ${err.response?.data?.message || "Something went wrong"}`); // Showing error toast message
     }
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        {/* Button to close the modal */}
-        <button className="close-btn" onClick={onClose}>
-          &times; {/* X symbol to close the modal */}
-        </button>
-        <h2 className="modal-title">Login</h2>
-        
-        {/* Display error message if login fails */}
-        {error && <p className="error-message">{error}</p>}
-        
-        {/* Form for the login inputs */}
-        <form onSubmit={handleSubmit} className="login-form">
-          <label>Email</label>
-          {/* Input for email */}
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)} // Update email state on input change
-            required // Makes the field mandatory
-          />
-          <label>Password</label>
-          {/* Input for password */}
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} // Update password state on input change
-            required // Makes the field mandatory
-          />
-          
-          {/* Submit button for the form */}
-          <button type="submit" className="submit-btn">Login</button>
-        </form>
-      </div>
-    </div>
-  );
-};
+    <dialog id="login-container"> {/* Modal container for login */}
+        <div className="login-modal"> {/* Main modal wrapper */}
+          <div className="modal-box"> {/* Box that holds the modal content */}
+            <form className="login-form" onSubmit={handleSubmit(onSubmit)}> {/* Login form */}
+              <button
+                type="button"
+                className="close-btn"
+                onClick={() => document.getElementById("login-container").close()} // Closing the modal when clicked
+              >
+                ✕ {/* Close button */}
+              </button>
+              <h3 className="modal-title">Login</h3> {/* Modal title */}
 
-export default LoginModal;
+              <div className="form-group"> {/* Grouping email input field */}
+                <label>Email</label> {/* Label for email */}
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  {...register("email", { required: true })} // Registering email input with validation
+                />
+                {errors.email && <span className="error-text">This field is required</span>} {/* Error message for email field */}
+              </div>
+
+              <div className="form-group"> {/* Grouping password input field */}
+                <label>Password</label> {/* Label for password */}
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register("password", { required: true })} // Registering password input with validation
+                />
+                {errors.password && <span className="error-text">This field is required</span>} {/* Error message for password field */}
+              </div>
+
+              <div className="form-footer"> {/* Footer for form actions */}
+                <button type="submit" className="login-btn">Login</button> {/* Submit button for login */}
+                <p> {/* Text for redirecting to signup */}
+                  Not registered?{" "}
+                  <Link to="/signup" className="signup-link"> {/* Link to signup page */}
+                    Signup
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      
+    </dialog> 
+  );
+}
+
+export default Login; // Exporting Login component for use in other parts of the app
